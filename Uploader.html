@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploader</title>
+    <link rel="stylesheet" href="./lib/vant/lib/index.css" />
+    <script src="./lib/vue/vue.min.js"></script>
+    <script src="./lib/vant/lib/vant.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>选择图片：</h2>
+        <input type="file" accept="image/*">
+        <h2>选择视频：</h2>
+        <input type="file" accept="video/*">
+        <h2>调用摄像头拍照</h2>
+        <input type="file" capture="camera" accept="image/*">
+        <h2>调用摄像头录像</h2>
+        <input type="file" capture="camera" accept="video/*">
+        <h2>vant上传组件</h2>
+        <van-uploader :after-read="afterRead" capture="camera" />
+    </div>
+    <script>
+        // 在 #app 标签下渲染一个按钮组件
+        new Vue({
+            el: '#app',
+            methods: {
+                afterRead(file) {
+                    // 此时可以自行将文件上传至服务器
+                    console.log(file);
+                },
+            },
+        });
+
+        // // 调用函数组件，弹出一个 Toast
+        // vant.Toast('提示');
+
+        // // 通过 CDN 引入时不会自动注册 Lazyload 组件
+        // // 可以通过下面的方式手动注册
+        // Vue.use(vant.Lazyload);
+    </script>
+</body>
+
+</html>
